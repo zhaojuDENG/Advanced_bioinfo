@@ -1,8 +1,4 @@
----
-output:
-  html_document: default
- 
----
+
 Test_1
 
 Best seller in 1996 in regarding to total sale value
