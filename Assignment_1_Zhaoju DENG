@@ -5,8 +5,8 @@ Best seller in 1996 in regarding to total sale value
 1) select data in orders in 1996  
 2) join Orders and Orderdetails with necessary variables only
 3) join the above table with Products table
-4) order the table by SUM(quantity x price)
-select EmployeeID, sum(quantity x price) as TotalSaleValue from 
+4) order the table by SUM(quantity * price)
+select EmployeeID, sum(quantity * price) as TotalSaleValue from 
 (SELECT from (SELECT Orders.orderID, Orders.EmployeeID, Orders.orderDate from Orders 
 where orderDate between '1996-07-04' and '1996-12-31')Orders
 join (SELECT Orderdetails.orderID, Orderdetails.productID, Orderdetails.quantity from Orderdetails)Orderdetails 
