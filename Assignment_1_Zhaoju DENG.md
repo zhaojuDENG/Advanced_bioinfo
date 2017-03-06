@@ -1,0 +1,41 @@
+---
+output:
+  html_document: default
+ 
+---
+Test_1
+
+Best seller in 1996 in regarding to total sale value
+1) select data in orders in 1996  
+2) join Orders and Orderdetails with necessary variables only
+3) join the above table with Products table
+4) order the table by SUM(quantity x price)
+select EmployeeID, sum(quantity x price) as TotalSaleValue from 
+(SELECT from (SELECT Orders.orderID, Orders.EmployeeID, Orders.orderDate from Orders 
+where orderDate between '1996-07-04' and '1996-12-31')Orders
+join (SELECT Orderdetails.orderID, Orderdetails.productID, Orderdetails.quantity from Orderdetails)Orderdetails 
+on Orders.orderID = Orderdetails.orderID
+join (SELECT  Products.price,Products.productid from Products) Products
+on Orderdetails.productID = Products.productID) 
+group by EmployeeID
+order by TotalSaleValue DESC
+
+
+Test_2
+
+CREATE TABLE samples (
+  id              INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  sample_id       INTEGER NOT NULL,
+  disease_status  VARBINARY(3), 
+  dignostic_date  DATE    NOT NULL,
+  age             integer NOT NULL,
+  );
+
+CREATE TABLE mutations (
+  id               INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  sample_id        INTEGER NOT NULL,
+  chromosome       INTEGER NOT NULL,
+  position         INTEGER(12) NOT NULL,
+  reference_base   VARCHAR(1) NOT NULL,
+  alternative_base VARCHAR(1) NOT NULL,
+  )
